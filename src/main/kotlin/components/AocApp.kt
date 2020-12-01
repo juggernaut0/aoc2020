@@ -4,14 +4,11 @@ import kui.Component
 import kui.Props
 import kui.classes
 import kui.renderOnSet
+import solutions.*
 
 class AocApp : Component() {
     private val tabs: List<BasePuzzle> = listOf(
-        object : BasePuzzle("Day 1") {
-            override fun solve(input: String): String {
-                return input
-            }
-        }
+        Day1()
     )
     private var currentTab by renderOnSet(1)
 
@@ -28,8 +25,11 @@ class AocApp : Component() {
                         }
                     }
                 }
-                div(classes(AocStyles.puzzlePanel)) {
-                    tabs.getOrNull(currentTab - 1)?.also { component(it) }
+                for (i in 1..25) {
+                    val visibility = if (i != (currentTab)) mapOf("style" to "display: none;") else emptyMap()
+                    div(Props(classes = listOf(AocStyles.puzzlePanel), attrs = visibility)) {
+                        tabs.getOrNull(i - 1)?.also { component(it) }
+                    }
                 }
             }
         }

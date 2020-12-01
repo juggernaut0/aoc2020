@@ -3,13 +3,6 @@ package components
 import styleClass
 
 object AocStyles {
-    private const val col2 = "${200.0/12}%"
-    private const val col3 = "${300.0/12}%"
-    private const val col4 = "${400.0/12}%"
-    private const val col6 = "${600.0/12}%"
-    private const val col8 = "${800.0/12}%"
-    private const val col10 = "${1000.0/12}%"
-
     private const val borderGray = "#ccc"
 
     val wrapper by styleClass {
@@ -70,15 +63,37 @@ object AocStyles {
     }
 
     val inputBox by styleClass {
-        +"width: 100%;"
+        +"""
+            box-sizing: border-box;
+            resize: none;
+        """.trimIndent()
+    }
+}
+
+object Grid {
+    private const val c2 = "${200.0/12}%"
+    private const val c3 = "${300.0/12}%"
+    private const val c4 = "${400.0/12}%"
+    private const val c6 = "${600.0/12}%"
+    private const val c8 = "${800.0/12}%"
+    private const val c10 = "${1000.0/12}%"
+
+    val dFlex by styleClass {
+        +"""
+            display: flex;
+            flex-wrap: wrap;
+        """.trimIndent()
     }
 
-    val solveButton by styleClass {
+    val col6 by styleClass {
         +"""
-            margin-left: auto;
-            margin-right: auto;
-            display: block;
-            width: 20rem;
+            flex: 0 0 $c6;
+        """.trimIndent()
+    }
+
+    val col12 by styleClass {
+        +"""
+            flex: 0 0 100%;
         """.trimIndent()
     }
 }
