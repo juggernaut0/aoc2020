@@ -1,9 +1,9 @@
 plugins {
-    id("org.jetbrains.kotlin.js") version "1.4.10"
+    id("org.jetbrains.kotlin.js") version "1.4.20"
     id("com.bmuschko.docker-remote-api") version "6.1.3"
 }
 
-version = "1.0-SNAPSHOT"
+version = "master"
 
 repositories {
     mavenCentral()
