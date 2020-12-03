@@ -8,8 +8,9 @@ import solutions.*
 
 class AocApp : Component() {
     private val tabs: List<BasePuzzle> = listOf(
-            Day1(),
-            Day2(),
+        Day1(),
+        Day2(),
+        Day3(),
     )
     private var currentTab by renderOnSet(tabs.size) // TODO default to 1 when not Dec 2020
 
