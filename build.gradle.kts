@@ -13,6 +13,8 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-js"))
     implementation("com.github.juggernaut0.kui:kui:0.11.0")
+
+    testImplementation(kotlin("test-js"))
 }
 
 kotlin {
@@ -20,7 +22,7 @@ kotlin {
         browser {
             testTask {
                 useKarma {
-                    useChromeHeadless()
+                    useFirefoxHeadless()
                 }
             }
         }
