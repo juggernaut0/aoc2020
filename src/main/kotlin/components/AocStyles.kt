@@ -79,21 +79,23 @@ object Grid {
     private const val c10 = "${1000.0/12}%"
 
     val dFlex by styleClass {
-        +"""
-            display: flex;
+        +"""display: flex;
             flex-wrap: wrap;
         """.trimIndent()
     }
 
+    val col3 by styleClass {
+        +"""flex: 0 0 $c3;
+        """.trimIndent()
+    }
+
     val col6 by styleClass {
-        +"""
-            flex: 0 0 $c6;
+        +"""flex: 0 0 $c6;
         """.trimIndent()
     }
 
     val col12 by styleClass {
-        +"""
-            flex: 0 0 100%;
+        +"""flex: 0 0 100%;
         """.trimIndent()
     }
 }
