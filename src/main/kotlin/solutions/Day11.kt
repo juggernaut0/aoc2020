@@ -2,6 +2,7 @@ package solutions
 
 import components.BasePuzzle
 import components.Grid
+import kotlinx.browser.window
 import kui.MarkupBuilder
 import kui.Props
 import kui.classes
@@ -20,12 +21,16 @@ class Day11 : BasePuzzle("Day 11: Seating System") {
     }
 
     private fun runToCompletion() {
-        while(true) {
+        fun callback() {
             val newMap = map.stepFn()
-            if (map == newMap) break
-            map = newMap
+            if (map != newMap) {
+                map = newMap
+                render()
+                window.requestAnimationFrame { callback() }
+            }
         }
-        render()
+
+        callback()
     }
 
     private lateinit var map: SeatMap
