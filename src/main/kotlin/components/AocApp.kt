@@ -20,6 +20,7 @@ class AocApp : Component() {
         Day10(),
         Day11(),
         Day12(),
+        Day13(),
     )
     private var currentTab by renderOnSet(tabs.size) // TODO default to 1 when not Dec 2020
 
