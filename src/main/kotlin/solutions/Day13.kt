@@ -17,36 +17,20 @@ class Day13 : BasePuzzle("Day 13: Shuttle Search") {
     }
 
     override fun solvePart2(input: String): String {
-        val (_, buses) = parseInput(input)
-
-        val z = buses.mapIndexedNotNull { index, busId -> busId?.let { it to index } }
-
-        val (a, _) = z.first()
-        val (start, _) = z.asSequence().drop(1).map { (b, i) ->
-            var n: Long = 0
-            while(true) {
-                if ((n*a + i) % b == 0L) {
-                    break
+        return parseInput(input)
+            .second
+            .mapIndexedNotNull { index, busId -> busId?.let { it.toLong() to index.toLong() } }
+            .fold(1L to 0L) { (p1, o1), (p2, o2) ->
+                var offset = o1
+                while((offset + o2) % p2 != 0L) {
+                    offset += p1
                 }
-                n += 1
+                val period = p1*p2
+                console.log("reduce: ($p1, $o1) ($p2, $o2) -> $period, $offset")
+                period to offset
             }
-            val start = n*a
-            val period = a.toLong()*b
-            console.log(start.toString(), period.toString())
-            start to period
-        }.reduce { (start1, period1), (start2, period2) ->
-            var n = 0
-            while (true) {
-                if ((start1 + n*period1) % period2 == start2) break
-                n += 1
-            }
-            val start = start1 + n*period1
-            val period = (period1 * period2)/a
-            console.log("reduce: ", n, start.toString(), period.toString())
-            start to period
-        }
-
-        return start.toString()
+            .second
+            .toString()
     }
 
     private fun parseInput(input: String): Pair<Int, List<Int?>> {
