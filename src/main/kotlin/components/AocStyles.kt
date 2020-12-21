@@ -16,7 +16,6 @@ object AocStyles {
     val container by styleClass {
         +"""
         display: flex;
-        flex-wrap: wrap;
         width: 100%;
         box-sizing: border-box;
         border: 1px solid $borderGray;
